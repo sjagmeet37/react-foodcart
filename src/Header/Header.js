@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Header.module.css"
-import meals from "./meals.jpg"
+import meals from "./../assets/meals.jpg"
 
 
 const Header = () => {
@@ -12,7 +12,7 @@ const Header = () => {
         <div>dummy cart</div>
     </div>
     <div className={style["main-image"]}>
-        <img src={meals} alt="Meals Photo"/>
+        <img src={meals} alt="Meals"/>
     </div>
     </React.Fragment>);
 }
