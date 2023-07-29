@@ -3,14 +3,14 @@ import style from "./MealItem.module.css";
 
 const MealItem = () => {
   return (
-    <div className={style.meal}>
+    <li className={style.meal}>
       <div>
         <h3>Meal Name</h3>
         <div className={style.description}>description</div>
         <div className={style.price}>$20</div>
       </div>
       <MealForm />
-    </div>
+    </li>
   );
 };
 

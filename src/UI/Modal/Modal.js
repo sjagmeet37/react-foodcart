@@ -1,4 +1,7 @@
-import styles from "./Modal.module.js";
+import Button from "../Button/Button";
+import Card from "../Card/Card";
+import styles from "./Modal.module.css";
+import React from "react";
 
 function Backdrop(props) {
   return <div className={styles.backdrop}></div>;
