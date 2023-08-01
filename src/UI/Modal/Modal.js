@@ -12,7 +12,7 @@ function ModalOverlay(props) {
   return (
     <Card>
       <div className={`${styles.modal}`}>
-        <Cart />
+        <div>{props.children}</div>
       </div>
     </Card>
   );
@@ -24,12 +24,7 @@ const Modal = (props) => {
       ReactDOM.createRoot(
       <Backdrop />, document.getElementById('backdrop-root'))
       ReactDOM.createRoot(
-      <ModalOverlay
-        showHideModal={props.showHideModal}
-        modalHeader={props.modalHeader}
-        modalContent={props.modalContent}
-      />
-      , document.getElementById('overlay-root'))
+      <ModalOverlay>{props.children}</ModalOverlay> , document.getElementById('overlay-root'))
     </React.Fragment>
   );
 };

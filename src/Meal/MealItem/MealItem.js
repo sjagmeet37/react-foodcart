@@ -1,15 +1,20 @@
 import MealForm from "../MealForm/MealForm";
 import style from "./MealItem.module.css";
 
-const MealItem = () => {
+const MealItem = (props) => {
+
+  const onFormSubmit = (event) => {
+    console.log(props.id);
+  }
+
   return (
-    <li className={style.meal}>
+    <li  key={props.id} className={style.meal}>
       <div>
-        <h3>Meal Name</h3>
-        <div className={style.description}>description</div>
-        <div className={style.price}>$20</div>
+        <h3>{props.name}</h3>
+        <div className={style.description}>{props.description}</div>
+        <div className={style.price}>${props.price}</div>
       </div>
-      <MealForm />
+      <MealForm onFormSubmit={onFormSubmit} />
     </li>
   );
 };
