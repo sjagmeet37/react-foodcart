@@ -1,6 +1,8 @@
 import { useState } from "react";
 import style from "./Input.module.css"
 
+
+//TO-DO try passing all props in a object to make it more configurable
 const Input = (props) => {
     return (
         <div className={style.input}>

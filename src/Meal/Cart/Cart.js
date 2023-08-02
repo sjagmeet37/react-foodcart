@@ -3,6 +3,15 @@ import CartItem from "../CartItem/CartItem";
 import style from "./Cart.module.css";
 
 const Cart = (props) => {
+
+    const onOrderPressed = () => {
+        console.log("ordering");   
+    }
+
+    const onClosePressed = () => {
+        props.toggleCartModal();
+    }
+
   return (
     <Modal>
         <ul className={style["cart-items"]}>
@@ -14,8 +23,8 @@ const Cart = (props) => {
           <div>$50</div>
         </div>
         <div className={style.actions}>
-          <button>Close</button>
-          <button>Order</button>
+          <button onClick={onClosePressed}>Close</button>
+          <button onClick={onOrderPressed}>Order</button>
         </div>
     </Modal>
   );
