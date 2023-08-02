@@ -2,7 +2,6 @@ import Card from "../../UI/Card/Card";
 import MealItem from "../MealItem/MealItem";
 import style from "./MealList.module.css";
 import { DUMMY_MEALS } from "./../../assets/MealList";
-import { useState } from "react";
 
 const MealList = (props) => {
   const meals = DUMMY_MEALS.map((meal) => {

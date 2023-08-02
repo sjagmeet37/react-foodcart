@@ -1,10 +1,19 @@
+import { useContext } from "react";
 import MealForm from "../MealForm/MealForm";
 import style from "./MealItem.module.css";
+import CartContext from "../../state/cart-context";
 
 const MealItem = (props) => {
 
-  const onFormSubmit = (event) => {
-    console.log(props.id);
+  const cartItems = useContext(CartContext);
+
+  const onFormSubmit = (quantity) => {
+
+    if (cartItems[props.id]) {
+      cartItems[props.id] = cartItems[props.id] + quantity;
+    }
+
+    console.log(cartItems);
   }
 
   return (
