@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import Header from "./Header/Header";
 import MealList from "./Meal/MealList/MealList";
 import MealsSummary from "./Meal/MealSummary/MealSummary";
-import Cart from "./Meal/Cart/Cart";
+import CartContext from "./state/cart-context";
 
 function App() {
   return (
-    <React.Fragment>
+    <CartContext.Provider value={{}}>
       <Header />
       <MealsSummary />
       <MealList />
-      </React.Fragment>
+      </CartContext.Provider>
   );
 }
 
