@@ -8,12 +8,12 @@ const MealForm = (props) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    props.onFormSubmit(itemQuantityRef);
+    props.onFormSubmit(itemQuantityRef.current.value);
   };
 
   return (
     <form onSubmit={onFormSubmit}>
-        <Input label="Amount" type="number" ref={itemQuantityRef}/>
+        <Input label="Amount" type="number" inputRef={itemQuantityRef}/>
         <Button type="submit" name="+Add" />
     </form>
   );

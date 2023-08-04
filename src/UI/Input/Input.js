@@ -13,7 +13,7 @@ const Input = (props) => {
             min="1" 
             step="1"
             defaultValue="1"
-            ref={props.ref}
+            ref={props.inputRef}
             />
         </div>
 

@@ -10,9 +10,10 @@ const MealItem = (props) => {
   const onFormSubmit = (quantity) => {
 
     if (cartItems[props.id]) {
-      cartItems[props.id] = cartItems[props.id] + quantity;
+      cartItems[props.id] = +cartItems[props.id] + +quantity;
+    } else {
+      cartItems[props.id] = +quantity;
     }
-
     console.log(cartItems);
   }
 
