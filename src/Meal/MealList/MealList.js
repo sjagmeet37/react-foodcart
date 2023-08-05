@@ -5,6 +5,7 @@ import { DUMMY_MEALS } from "./../../assets/MealList";
 
 const MealList = (props) => {
   const meals = DUMMY_MEALS.map((meal) => {
+    
     return ( 
       <MealItem key={meal.id}
         name={meal.name}
@@ -15,8 +16,6 @@ const MealList = (props) => {
     );
   });
     
-
-
   return (
     <div className={style.meals}>
       <Card>
