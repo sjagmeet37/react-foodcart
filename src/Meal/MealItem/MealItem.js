@@ -5,6 +5,17 @@ import CartContext from "../../state/cart-context";
 
 const MealItem = (props) => {
 
+  const cartCtx = useContext(CartContext);
+  const onMealItemAdded = amount => {
+      cartCtx.addItem({
+        id: props.id,
+        name: props.name,
+        description: props.description,
+        price: props.price,
+        amount: amount
+      });
+  }
+
   return (
     <li  key={props.id} className={style.meal}>
       <div>
@@ -12,7 +23,7 @@ const MealItem = (props) => {
         <div className={style.description}>{props.description}</div>
         <div className={style.price}>${props.price}</div>
       </div>
-      <MealForm />
+      <MealForm onMealItemAdded={onMealItemAdded}/>
     </li>
   );
 };
