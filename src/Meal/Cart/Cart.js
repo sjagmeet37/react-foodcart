@@ -16,9 +16,8 @@ const prepareCartItems = (orderdItems) => {
 };
 
 const Cart = (props) => {
-  const ctx = useContext(CartContext);
+  const cartCtx = useContext(CartContext);
 
-  const orderdItemsList = prepareCartItems(ctx);
 
   const onItemIncrement = (id) => {
 
@@ -26,15 +25,17 @@ const Cart = (props) => {
 
   const onItemDecrement = (id) => {
       
-  }
+  } 
 
-  const meals = orderdItemsList.map((element) => {
+  const hasItems = cartCtx.items.length > 0;
+  const totalAmount = cartCtx.totalAmount; 
+  const meals = cartCtx.items.map((element) => {
     return (
       <CartItem
         key={element.id}
         price={element.price}
         name={element.name}
-        amount={element.quantity}
+        amount={element.amount}
         onItemIncrement={onItemIncrement}
         onItemDecrement={onItemDecrement}
       />
@@ -54,11 +55,11 @@ const Cart = (props) => {
       <ul className={style["cart-items"]}>{meals}</ul>
       <div className={style.total}>
         <div>Total Amount</div>
-        <div>$50</div>
+        <div>${totalAmount}</div>
       </div>
       <div className={style.actions}>
         <button onClick={onClosePressed}>Close</button>
-        <button onClick={onOrderPressed}>Order</button>
+        {hasItems && <button onClick={onOrderPressed}>Order</button>}
       </div>
     </Modal>
   );
