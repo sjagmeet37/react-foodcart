@@ -3,19 +3,18 @@ import Modal from "../../UI/Modal/Modal";
 import CartItem from "../CartItem/CartItem";
 import style from "./Cart.module.css";
 import CartContext from "../../state/cart-context";
-import { DUMMY_MEALS } from "../../assets/MealList";
 
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
 
 
-  const onItemIncrement = (id) => {
-
+  const onItemIncrement = (item) => {
+      cartCtx.addItem(item);
   }
 
   const onItemDecrement = (id) => {
-      
+      cartCtx.removeElement(id);
   } 
 
   const hasItems = cartCtx.items.length > 0;
@@ -28,8 +27,8 @@ const Cart = (props) => {
         price={element.price}
         name={element.name}
         amount={element.amount}
-        onItemIncrement={onItemIncrement} //use .bind here along with context methods
-        onItemDecrement={onItemDecrement}
+        onItemIncrement={onItemIncrement.bind(null, element)} //use .bind here along with context methods
+        onItemDecrement={onItemDecrement.bind(null, element.id)}
       />
     );
   });
