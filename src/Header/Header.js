@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import style from "./Header.module.css";
 import meals from "./../assets/meals.jpg";
 import Button from "../UI/Button/Button";
 import Modal from "../UI/Modal/Modal";
 import Cart from "../Meal/Cart/Cart";
+import CartContext from "../state/cart-context";
 
 const Header = () => {
 
-    const [showCart, setShowCart] = useState(false);
+   const cartCtx = useContext(CartContext);
+   const [showCart, setShowCart] = useState(false);
+   const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
+    return curNumber + item.amount
+   } ,0);
+
 
    const toggleCartModal = () => {
       setShowCart((prevState) => {
@@ -24,7 +30,7 @@ const Header = () => {
       {showCart && <Cart toggleCartModal={toggleCartModal} />} 
       <div className={style.header}>
         <h1>Meals</h1>
-        <Button type="button" name="Your Cart" icon="true" badge={10} onButtonClicked={toggleCartModal}/>
+        <Button type="button" name="Your Cart" icon="true" badge={numberOfCartItems} onButtonClicked={toggleCartModal}/>
       </div>
       <div className={style["main-image"]}>
         <img src={meals} alt="Meals" />

@@ -16,7 +16,7 @@ const Button = (props) => {
     <button type={props.type} className={style.button} onClick={onButtonClicked}>
       {props.icon && <img src={cart} alt="cart" className={style.icon} />}
       {props.name}
-      {props.badge && <span className={style.badge}> {props.badge} </span>}
+      {(props.badge || props.badge >= -1) && <span className={style.badge}> {props.badge} </span>}
     </button>
   );
 };
