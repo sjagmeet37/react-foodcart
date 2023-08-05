@@ -5,15 +5,6 @@ import style from "./Cart.module.css";
 import CartContext from "../../state/cart-context";
 import { DUMMY_MEALS } from "../../assets/MealList";
 
-const prepareCartItems = (orderdItems) => {
-  let boughtItems = [];
-  for (let key in orderdItems) {
-    let itemDetail = DUMMY_MEALS.filter((item) => item.id === key);
-    itemDetail[0].quantity = orderdItems[key];
-    boughtItems.push(itemDetail[0]);
-  }
-  return boughtItems;
-};
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
@@ -28,7 +19,8 @@ const Cart = (props) => {
   } 
 
   const hasItems = cartCtx.items.length > 0;
-  const totalAmount = cartCtx.totalAmount; 
+  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+
   const meals = cartCtx.items.map((element) => {
     return (
       <CartItem
@@ -36,7 +28,7 @@ const Cart = (props) => {
         price={element.price}
         name={element.name}
         amount={element.amount}
-        onItemIncrement={onItemIncrement}
+        onItemIncrement={onItemIncrement} //use .bind here along with context methods
         onItemDecrement={onItemDecrement}
       />
     );
@@ -55,7 +47,7 @@ const Cart = (props) => {
       <ul className={style["cart-items"]}>{meals}</ul>
       <div className={style.total}>
         <div>Total Amount</div>
-        <div>${totalAmount}</div>
+        <div>{totalAmount}</div>
       </div>
       <div className={style.actions}>
         <button onClick={onClosePressed}>Close</button>
