@@ -5,18 +5,6 @@ import CartContext from "../../state/cart-context";
 
 const MealItem = (props) => {
 
-  const cartItems = useContext(CartContext);
-
-  const onFormSubmit = (quantity) => {
-
-    if (cartItems[props.id]) {
-      cartItems[props.id] = +cartItems[props.id] + +quantity;
-    } else {
-      cartItems[props.id] = +quantity;
-    }
-    console.log(cartItems);
-  }
-
   return (
     <li  key={props.id} className={style.meal}>
       <div>
@@ -24,7 +12,7 @@ const MealItem = (props) => {
         <div className={style.description}>{props.description}</div>
         <div className={style.price}>${props.price}</div>
       </div>
-      <MealForm onFormSubmit={onFormSubmit} />
+      <MealForm />
     </li>
   );
 };
